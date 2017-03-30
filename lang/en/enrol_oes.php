@@ -24,3 +24,4 @@
 
 $string['pluginname'] = 'Open Enrollment System';
 $string['pluginname_desc'] = 'Open Enrollment System description here...';
+$string['sync_taskname'] = 'Sync task';
