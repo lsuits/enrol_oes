@@ -19,6 +19,7 @@
  *
  * @package    enrol_oes
  * @copyright  2017, Louisiana State University
+ * @copyright  2017, Chad Mazilly, Robert Russo
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
