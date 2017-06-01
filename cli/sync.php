@@ -56,19 +56,27 @@ Example:
     die;
 }
 
-if (!enrol_is_enabled('oes')) {
-    cli_error('enrol_oes plugin is disabled, synchronisation stopped', 2);
-}
+// try {
 
-/** @var $plugin enrol_oes_plugin */
-$plugin = enrol_get_plugin('oes');
+    // instantiate a plugin instance
+    $plugin = \enrol_oes_plugin_instance::make();
+    
+    cli_separator();
+    cli_writeln('Enrollment sync has begun using driver: ' . $plugin->get_oes_driver_name());
+    cli_separator();
+    
+    // run full enrollment synchronization
+    $plugin->sync_enrollment(new text_progress_trace());
 
-if (empty($options['verbose'])) {
-    $trace = new null_progress_trace();
-} else {
-    $trace = new text_progress_trace();
-}
+    cli_separator();
+    cli_writeln('Enrollment sync has stopped.');
+    cli_separator();
+    exit;
 
-$result = $plugin->sync($trace);
-
-exit($result);
+// } catch (\enrol_oes\exceptions\oes_exception $e) {
+    
+//     cli_separator();
+//     cli_error($e->getMessage());
+//     cli_separator();
+//     exit;
+// }

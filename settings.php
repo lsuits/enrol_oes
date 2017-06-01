@@ -30,5 +30,5 @@ require_once(__DIR__.'/adminlib.php');
 if ($ADMIN->fulltree) {
 
     //--- general settings -----------------------------------------------------------------------------------
-    $settings->add(new admin_setting_heading('enrol_oes_settings', '', get_string('pluginname_desc', 'enrol_oes')));
+    $settings->add(new admin_setting_heading('enrol_oes_settings', '', enrol_oes_string::display('pluginname_desc')));
 }

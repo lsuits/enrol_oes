@@ -15,7 +15,7 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Scheduled task for processing Open Enroll System enrolments.
+ * String display class for Open Enrollment System.
  *
  * @package    enrol_oes
  * @copyright  2017, Louisiana State University
@@ -23,36 +23,12 @@
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-namespace enrol_oes\task;
-
 defined('MOODLE_INTERNAL') || die;
 
-class oes_sync_task extends \core\task\scheduled_task {
-
-    /**
-     * Get a descriptive name for this task (shown to admins).
-     *
-     * @return string
-     */
-    public function get_name() {
-        return \enrol_oes_string::display('sync_taskname');
+class enrol_oes_string {
+    
+    public static function display($key)
+    {
+        return get_string($key, 'enrol_oes');
     }
-
-    /**
-     * Do the job.
-     * 
-     * Throw exceptions on errors (the job will be retried).
-     */
-    public function execute() {
-        if (!enrol_is_enabled('oes')) {
-            return;
-        }
-
-        $plugin = \enrol_oes_plugin_instance::make();
-
-        $response = $plugin->just_do_it(new null_progress_trace());
-        
-        return $response;
-    }
-
 }

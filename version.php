@@ -24,6 +24,6 @@
 
 defined('MOODLE_INTERNAL') || die();
 
-$plugin->version   = 2017033000;
+$plugin->version   = 2017041001;
 $plugin->requires  = 2016051900;
 $plugin->component = 'enrol_oes';
